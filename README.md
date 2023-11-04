@@ -12,3 +12,9 @@ class MessageEvent(BaseEvent):
     message_id: str
     time: datetime
 ```
+
+## 注意事项
+
+此适配器需要与其他任意适配器一起使用
+
+此适配器只对能够获取消息的事件做修改，其余事件会原样返回
