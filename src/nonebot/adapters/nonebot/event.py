@@ -60,9 +60,7 @@ class MessageEvent(BaseEvent):
         self._origin = origin
 
     async def post_init(self, bot: Bot):
-        self.message = await UniMessage.generate(
-            message=self._origin.get_message(), bot=bot
-        )
+        self.message = await UniMessage.generate(message=self._origin.get_message(), bot=bot)
         self.message_id = UniMessage.get_message_id(self._origin, bot)
         if self.message.has(Reply):
             self.reply = self.message[Reply, 0]
