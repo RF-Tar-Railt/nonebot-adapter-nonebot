@@ -1,4 +1,5 @@
 from nonebot_plugin_alconna.uniseg import At as At
+from nonebot_plugin_alconna.uniseg import Card as Card
 from nonebot_plugin_alconna.uniseg import File as File
 from nonebot_plugin_alconna.uniseg import Text as Text
 from nonebot_plugin_alconna.uniseg import AtAll as AtAll
@@ -9,9 +10,7 @@ from nonebot_plugin_alconna.uniseg import Other as Other
 from nonebot_plugin_alconna.uniseg import Reply as Reply
 from nonebot_plugin_alconna.uniseg import Video as Video
 from nonebot_plugin_alconna.uniseg import Voice as Voice
-from nonebot_plugin_alconna.uniseg import Target as Target
 from nonebot_plugin_alconna.uniseg import RefNode as RefNode
-from nonebot_plugin_alconna.uniseg.segment import Card as Card
 from nonebot_plugin_alconna.uniseg import Reference as Reference
 from nonebot_plugin_alconna.uniseg import CustomNode as CustomNode
 from nonebot_plugin_alconna.uniseg import UniMessage as UniMessage
