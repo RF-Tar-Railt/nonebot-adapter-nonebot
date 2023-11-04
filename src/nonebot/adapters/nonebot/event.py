@@ -4,7 +4,7 @@ from typing_extensions import override
 
 from pydantic import Field
 from nonebot.utils import escape_tag
-from nonebot_plugin_alconna import Reply, UniMessage
+from nonebot_plugin_alconna import Reply, UniMessage, Target
 
 from nonebot.adapters import Bot
 from nonebot.adapters import Message
@@ -53,6 +53,7 @@ class MessageEvent(BaseEvent):
     message: UniMessage = Field(default_factory=UniMessage)
     message_id: str = ""
     time: datetime = Field(default_factory=datetime.now)
+    channel: Target = Field(default_factory=lambda _: Target(""))
 
     def __init__(self, origin: BaseEvent):
         super().__init__()
@@ -62,6 +63,7 @@ class MessageEvent(BaseEvent):
     async def post_init(self, bot: Bot):
         self.message = await UniMessage.generate(message=self._origin.get_message(), bot=bot)
         self.message_id = UniMessage.get_message_id(self._origin, bot)
+        self.channel = UniMessage.get_target(self._origin, bot)
         if self.message.has(Reply):
             self.reply = self.message[Reply, 0]
             self.message = self.message.exclude(Reply)
@@ -95,8 +97,29 @@ class MessageEvent(BaseEvent):
         return self.to_me
 
     def get_uni_message(self) -> UniMessage:
+        """获取通用消息对象"""
         return self.message
 
     @property
     def __uni_origin__(self):
         return self._origin
+
+    @property
+    def is_private(self) -> bool:
+        """是否为私聊消息"""
+        return self.channel.private
+
+    @property
+    def is_channel(self) -> bool:
+        """是否为频道消息"""
+        return self.channel.channel
+
+    @property
+    def chat_id(self) -> str:
+        """获取聊天场景 ID，私聊为用户 ID，频道为子频道 ID，群聊为群 ID"""
+        return self.channel.id
+
+    @property
+    def guild_id(self) -> Optional[str]:
+        """针对频道的频道 ID"""
+        return self.channel.parent_id if self.channel.parent_id else None
