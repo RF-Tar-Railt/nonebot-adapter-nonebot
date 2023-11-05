@@ -120,6 +120,11 @@ class MessageEvent(BaseEvent):
         return self.channel.id
 
     @property
+    def user_id(self) -> str:
+        """获取用户 ID"""
+        return self.get_user_id()
+
+    @property
     def guild_id(self) -> Optional[str]:
         """针对频道的频道 ID"""
         return self.channel.parent_id if self.channel.parent_id else None

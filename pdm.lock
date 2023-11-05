@@ -6,7 +6,7 @@ groups = ["default", "dev"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:0ca3b125a4f62ff34d483811a4d7d89aa0d4f5ec860348c7c53f038a843ab8c2"
+content_hash = "sha256:1cca51a6a52884b6d362524a4cccc4248954cc310406ffc36267efe754309d3e"
 
 [[package]]
 name = "anyio"
@@ -556,7 +556,7 @@ files = [
 
 [[package]]
 name = "nonebot-plugin-alconna"
-version = "0.31.4"
+version = "0.31.6"
 requires_python = ">=3.8"
 summary = "Alconna Adapter for Nonebot"
 dependencies = [
@@ -566,8 +566,8 @@ dependencies = [
     "nonebot2>=2.1.0",
 ]
 files = [
-    {file = "nonebot_plugin_alconna-0.31.4-py3-none-any.whl", hash = "sha256:efa8a8424daedda7483f378a5298795035cd51eea49c18b127c6d2ee84ee189a"},
-    {file = "nonebot_plugin_alconna-0.31.4.tar.gz", hash = "sha256:ff44275187a983e80d4e86d27f9c58ddd7d7ef7b3df6c2b1bef772b5982181c8"},
+    {file = "nonebot_plugin_alconna-0.31.6-py3-none-any.whl", hash = "sha256:da93ad6d6d956ce9e856e63ee627c304b20c0ddfee54d90e11e67c02ede5184a"},
+    {file = "nonebot_plugin_alconna-0.31.6.tar.gz", hash = "sha256:687a07e73a844d1fa2ee798c9d19a95ce40d111f9fe10a2a574a1d9e2561b2fd"},
 ]
 
 [[package]]

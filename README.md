@@ -37,3 +37,30 @@ class MessageEvent(BaseEvent):
 此适配器需要与其他任意适配器一起使用
 
 此适配器只对能够获取消息的事件做修改，其余事件会原样返回
+
+
+## 示例
+
+```python
+from nonebot import on_command
+from nonebot.adapter.nonebot import Bot, MessageEvent, Message
+
+test = on_command("test")
+
+@test.handle()
+async def _(event: MessageEvent):
+    await event.message.send(at_sender=True)
+
+@test.handle()
+async def _():
+    msg = Message.text("test").image(url="https://i0.hdslb.com/bfs/article/8b6b7b7b0b0b0b0b0b0b0b0b0b0b0b0b0b0b.jpg")
+    receipt = await msg.send()
+    await receipt.recall(5)
+
+@test.handle()
+async def _(bot: Bot, event: MessageEvent):
+    print(event.channel_id)
+    print(event.message_id)
+    print(event.message)
+    await bot.send(event, Message.text("test"))
+```
